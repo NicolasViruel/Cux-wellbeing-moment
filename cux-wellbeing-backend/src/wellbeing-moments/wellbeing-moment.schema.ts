@@ -14,8 +14,8 @@ export class WellbeingMoments extends Document{
     @Prop({default: Date.now})
     createdAt: Date
     
-    @Prop({ default: null })
-    scheduleAt: Date
+    @Prop({ type: Date, required: true })
+    scheduledAt: Date
 
 
 }

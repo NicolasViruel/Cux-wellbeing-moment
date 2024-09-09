@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Post } from '@nestjs/common';
 import { WellbeingMomentsService } from './wellbeing-moments.service';
 
 @Controller('wellbeing-moments')
@@ -9,9 +9,17 @@ export class WellbeingMomentsController {
     async createMoment(
         @Body('type') type: string,
         @Body('description') description: string,
-        @Body('scheduleAt') scheduleAt?: Date,
+        @Body('scheduledAt') scheduledAt: string,
     ) {
-        return this.momentsService.createMoment(type, description, scheduleAt);
+        // Convertir la fecha a un objeto Date
+        const date = new Date(scheduledAt);
+
+        // Verificar si la fecha es válida
+        if (isNaN(date.getTime())) {
+            throw new BadRequestException('La fecha proporcionada no es válida.');
+        }
+
+        return this.momentsService.createMoment(type, description, date);
     }
 
     @Get()

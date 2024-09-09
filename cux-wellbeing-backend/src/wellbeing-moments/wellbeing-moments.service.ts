@@ -8,8 +8,11 @@ export class WellbeingMomentsService {
 
     constructor(@InjectModel(WellbeingMoments.name) private modelMoment: Model<WellbeingMoments>) {}
 
-    async createMoment(type: string, description: string, scheduleAt?: Date): Promise<WellbeingMoments>{
-        const newMoment = new this.modelMoment({ type, description, scheduleAt})        
+    async createMoment(type: string, description: string, scheduledAt?: Date): Promise<WellbeingMoments>{
+        // Verifica que `scheduledAt` sea una instancia de Date
+        const date = scheduledAt instanceof Date && !isNaN(scheduledAt.getTime()) ? scheduledAt : null;
+
+        const newMoment = new this.modelMoment({ type, description, scheduledAt: date})        
         return newMoment.save();
     }
 
