@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import CreateMomentPage from './pages/CreateMomentPage';
 import UserListPage from './pages/UserListPage';
 import AssignMomentPage from './pages/AssignMomentPage';
+import CreateUserPage from './pages/CreateUserPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/create-moment" element={<CreateMomentPage />} />
         <Route path="/users" element={<UserListPage />} />
         <Route path="/assign-moment" element={<AssignMomentPage />} />
+        <Route path="/create-user" element={<CreateUserPage />} />
       </Routes>
     </Router>
   );
