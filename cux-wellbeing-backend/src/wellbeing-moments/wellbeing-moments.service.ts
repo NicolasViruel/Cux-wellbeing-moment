@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { WellbeingMoments } from './wellbeing-moment.schema';
 import { Model } from 'mongoose';
@@ -18,6 +18,13 @@ export class WellbeingMomentsService {
 
     async findAll(): Promise<WellbeingMoments[]>{
         return this.modelMoment.find().exec();
+    }
+
+    async deleteMoment(momentId: string): Promise<void> {
+        const result = await this.modelMoment.findByIdAndDelete(momentId);
+        if (!result) {
+          throw new NotFoundException(`Micro-momento con ID ${momentId} no encontrado`);
+        } 
     }
 
 

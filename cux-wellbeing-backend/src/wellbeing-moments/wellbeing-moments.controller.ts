@@ -1,5 +1,5 @@
 
-import { BadRequestException, Body, Controller, Get, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { WellbeingMomentsService } from './wellbeing-moments.service';
 
 @Controller('wellbeing-moments')
@@ -19,15 +19,18 @@ export class WellbeingMomentsController {
       throw new BadRequestException('La fecha proporcionada no es válida.');
     }
 
-    // la fecha con la diferencia horaria (-3 horas)
-    const utcDate = new Date(date.getTime() + 3 * 60 * 60 * 1000);
-
-    return this.momentsService.createMoment(type, description, utcDate);
+    // Almacena la fecha tal cual esta (en UTC)
+  return this.momentsService.createMoment(type, description, date);
   }
 
   @Get()
   async findAll() {
     return this.momentsService.findAll();
+  }
+
+  @Delete(':id')
+  async deleteMoment(@Param('id') id: string){
+    return this.momentsService.deleteMoment(id);
   }
 }
 

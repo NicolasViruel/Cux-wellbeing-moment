@@ -12,6 +12,7 @@ const HomePage = () => {
       <Link to="/create-moment" className="btn btn-primary m-2 ">Crear Micro-Momento</Link>
       <Link to="/users" className="btn btn-primary m-2 ">Lista de Usuarios</Link>
       <Link to="/assign-moment" className="btn btn-primary m-2  ">Asignar Micro-Momento</Link>
+      <Link to="/moments" className="btn btn-primary m-2  ">Listar Micro-Momentos</Link>
     </div>
     </div>
     

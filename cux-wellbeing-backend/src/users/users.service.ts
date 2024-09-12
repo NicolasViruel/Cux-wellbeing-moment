@@ -36,6 +36,15 @@ export class UsersService {
       .exec();
   }
 
+  async deleteUser(userId: string): Promise<void>{
+    const result = await this.userModel.findByIdAndDelete(userId);
+
+    if (!result) {
+      throw new Error(`Usuario con ID ${userId} no encontrado`);
+    }
+    
+  }
+
   async assignMomentToUser(userId: string, momentId: string): Promise<UserCUX> {
     const user = await this.userModel.findById(userId);
     if (!user) {

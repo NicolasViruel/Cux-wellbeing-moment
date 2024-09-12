@@ -5,6 +5,7 @@ import CreateMomentPage from './pages/CreateMomentPage';
 import UserListPage from './pages/UserListPage';
 import AssignMomentPage from './pages/AssignMomentPage';
 import CreateUserPage from './pages/CreateUserPage';
+import MomentListPage from './pages/MomentListPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/users" element={<UserListPage />} />
         <Route path="/assign-moment" element={<AssignMomentPage />} />
         <Route path="/create-user" element={<CreateUserPage />} />
+        <Route path="/moments" element={<MomentListPage />} />
       </Routes>
     </Router>
   );
