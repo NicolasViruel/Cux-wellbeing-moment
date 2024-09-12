@@ -1,28 +1,32 @@
 import React, { useState } from "react";
 import { createMoment } from "../services/api";
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 const CreateMomentPage = () => {
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
-  const [scheduleAt, setScheduleAt] = useState("");
+  const [scheduledAt, setScheduledAt] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createMoment({ type, description, scheduleAt });
+      await createMoment({ type, description, scheduledAt });
       toast.success('Micro-momento creado Exitosamente!');
       setType("");
       setDescription("");
-      setScheduleAt("");
+      setScheduledAt("");
+      navigate("/")
     } catch (error) {
       console.log("Error al crear el Micro-momento: ", error);
     }
   };
 
   return (
-    <div className="container">
-      <h2>Crear un nuevo Micro-Momento</h2>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <div className="container " style={{ maxWidth: '500px' }}>
+      <h2 className="text-center mb-4">Crear un nuevo Micro-Momento</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Tipo</label>
@@ -39,11 +43,14 @@ const CreateMomentPage = () => {
         </div>
         <div className="mb-3">
           <label className="form-label">Fecha y Hora</label>
-          <input type="datetime-local" className="form-control" value={scheduleAt} onChange={(e) =>setScheduleAt(e.target.value)} required/>
+          <input type="datetime-local" className="form-control" value={scheduledAt} onChange={(e) =>setScheduledAt(e.target.value)} required/>
         </div>
-        <button type="submit" className="btn btn-primary">Crear Micro-Momento</button>
+        <button type="submit" className="btn btn-primary w-100 mb-2">Crear Micro-Momento</button>
+        <button type="button" onClick={() => navigate(-1)} className="btn btn-danger w-100">Atrás</button>
       </form>
     </div>
+    </div>
+    
   );
 };
 

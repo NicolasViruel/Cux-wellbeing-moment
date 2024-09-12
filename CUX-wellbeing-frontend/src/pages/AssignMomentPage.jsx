@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import { assignMomentToUser, getAllMoments, getAllUsers } from '../services/api';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const AssignMomentPage = () => {
   const [users, setUsers] = useState([]);
   const [moments, setMoments] = useState([]);
   const [selectUser, setSelectedUser] = useState('');
   const [selectMoment, setSelectedMoment] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () =>{
@@ -25,11 +28,13 @@ const AssignMomentPage = () => {
   const handleAssign = async (e) =>{
     e.preventDefault();
     if (!selectUser && !selectMoment) {
-      alert('Por favor selecciona un usuario y un Micro-momento');
+      toast.error("Debe seleccionar un usuario y un momento")
       return
     }
     try {
       await assignMomentToUser(selectUser, selectMoment);
+      toast.success('Micro-momento asignado Exitosamente!');
+      navigate("/")
     } catch (error) {
       console.error('Error al asignar micro-momento:', error);
     }
@@ -37,8 +42,9 @@ const AssignMomentPage = () => {
 
   
   return (
-    <div className="container">
-      <h2>Asignar Micro-Momento a Usuario</h2>
+    <div className='d-flex justify-content-center align-items-center vh-100'>
+      <div className="container" style={{ maxWidth: '500px' }}>
+      <h2 className='text-center mb-4'>Asignar Micro-Momento a Usuario</h2>
       <form onSubmit={handleAssign}>
         <div className="mb-3">
           <label className="form-label">Selecciona Usuario</label>
@@ -62,9 +68,12 @@ const AssignMomentPage = () => {
             ))}
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">Asignar Micro-Momento</button>
+        <button type="submit" className="btn btn-primary w-100 mb-2">Asignar Micro-Momento</button>
+        <button type="button" onClick={() => navigate(-1)} className="btn btn-danger w-100">Atrás</button>
       </form>
     </div>
+    </div>
+    
   )
 }
 
