@@ -1,26 +1,35 @@
-.btn-pink {
-  background-color: #ff69b4 !important;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease; 
-  text-decoration: none; 
-}
-
-.btn-pink:hover {
-  background-color: #e3057b; 
-  color: white;
-  text-decoration: none; 
-}
-
-
 body {
-  background: linear-gradient(to bottom right, #98ce9e, #fff);
+  background-color: #e6f7e8;
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
   height: 100%;
   width: 100%;
+}
+
+.btn-pink {
+  background-color: #ff69b4;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-pink:hover {
+  background-color: #ff1493;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+  margin-right: 10px;
+}
+
+.text-center {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
 }
