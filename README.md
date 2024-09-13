@@ -17,7 +17,7 @@ El proyecto está dividido en dos partes principales: un backend desarrollado co
 ### 1. Clonar el Repositorio
 
 
-git clone 
+git clone https://github.com/NicolasViruel/Cux-wellbeing-moment.git
 
 - **cd CUX-Wellbeing-moment**
 
