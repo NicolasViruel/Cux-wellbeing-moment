@@ -37,6 +37,7 @@ const AssignMomentPage = () => {
       navigate("/")
     } catch (error) {
       console.error('Error al asignar micro-momento:', error);
+      toast.error('Error al asignar micro-momento. Intente nuevamente.');
     }
   }
 

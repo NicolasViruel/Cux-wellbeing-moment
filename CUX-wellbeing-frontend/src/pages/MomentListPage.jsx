@@ -78,7 +78,7 @@ const MomentListPage = () => {
             </tbody>
           </table>
         )}
-        <button type="button" onClick={() => navigate(-1)} className="btn btn-secondary w-100 mt-4">Atrás</button>
+        <button type="button" onClick={() => navigate(-1)} className="btn btn-danger w-100 mt-4">Atrás</button>
 
         <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
 

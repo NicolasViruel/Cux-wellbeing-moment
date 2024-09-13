@@ -14,7 +14,7 @@ const CreateUserPage = () => {
     e.preventDefault();
     try {
       await createUser({ name, email, password });
-      toast.success('Usuario creado exitosamente!');
+      toast.success('Usuario creado exitosamente! 🤗');
       setName('');
       setEmail('');
       setPassword('');
@@ -60,7 +60,7 @@ const CreateUserPage = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary w-100 mb-2">Crear Usuario</button>
+        <button type="submit" className="btn btn-pink w-100 mb-2">Crear Usuario</button>
         <button type="button" onClick={() => navigate(-1)} className="btn btn-danger w-100">Atrás</button>
       </form>
     </div>

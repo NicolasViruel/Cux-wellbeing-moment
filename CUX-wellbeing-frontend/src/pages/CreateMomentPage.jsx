@@ -20,6 +20,7 @@ const CreateMomentPage = () => {
         description,
         scheduledAt: utcDate.toISOString(),
       });
+
       toast.success("Micro-momento creado exitosamente!");
       setType("");
       setDescription("");
@@ -27,6 +28,7 @@ const CreateMomentPage = () => {
       navigate("/");
     } catch (error) {
       console.log("Error al crear el Micro-momento: ", error);
+      toast.error("Error al crear el micro-momento. Intente nuevamente.");
     }
   };
 
